@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portfolio</title>
+    <link rel="stylesheet" href="login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="login-bg">
+
+        <img src="image/Group 26.png" alt="">
+    </div>
+    <div class="login-container">  
+        <h1>Hi Homie!</h1>
+        <h5>Welcome Back to your deskspace</h5>
+        <p id="error-message" class="error" style="position: absolute; top: 320px; left: 50%; transform: translateX(-50%); font-size: 20px;"></p>
+        <p id="success-message" class="success" style="position: absolute; top: 320px; left: 50%; transform: translateX(-50%); font-size: 20px;"></p>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+
+        <!-- Fixed Checkbox Section -->
+        <div style="display: flex; align-items: center; gap: 8px; justify-content: flex-start;">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember" style="margin: 0;">Remember me</label>
+        </div>
+        <button onclick="checkLogin()">Login</button>
+        <h5>━━━━━━━  or  ━━━━━━━</h5>
+        <button class="signup-btn" onclick="window.location.href='signup.html'">
+            Sign Up
+        </button>
+        <a href="signup.html" style="position: relative;top:20px; text-decoration: none;color: black;">Don't have an account yet?</a>
+    </div>
+
+    <script>
+        const users = [
+            { username: "admin", password: "1234", role: "admin" }, 
+            { username: "user1", password: "pass1", role: "user" }, 
+            { username: "user2", password: "pass2", role: "user" }  
+        ];
+
+        function checkLogin() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+
+            errorMessage.textContent = "";
+            successMessage.textContent = "";
+
+            if (!username || !password) {
+                errorMessage.textContent = "Please fill in both fields!";
+                return;
+            }
+
+            const user = users.find(u => u.username.toLowerCase() === username.toLowerCase() && u.password === password);
+
+            if (user) {
+                successMessage.textContent = "Logging in..."; 
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("username", user.username);
+                localStorage.setItem("role", user.role);
+
+                setTimeout(() => {
+                    if (user.role === "admin") {
+                        window.location.href = "dashboard.html"; 
+                    } else {
+                        window.location.href = "user1.html"; 
+                    }
+                }, 1000); 
+            } else {
+                errorMessage.textContent = "Invalid username or password!";
+            }
+        }
+    </script>
+
+</body>
+</html>

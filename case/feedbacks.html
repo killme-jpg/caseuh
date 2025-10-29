@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home - Your Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        nav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -230px;
+            background-color: #000000;
+            color: white;
+            padding-top: 20px;
+            transition: left 0.3s;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+        }
+
+        body.sidebar-active .content {
+            margin-left: 250px;
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #000000;
+        }
+
+        .more-link {
+            display: block;
+            padding: 10px;
+            color: white;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        /* Feedback Posts Styling */
+        .feedback-posts {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-post {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .feedback-post:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-post h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .feedback-post p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .feedback-post small {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="announcement.html">Announcement</a>
+        <a href="accounts.html">Accounts</a>
+        <a href="feedbacks.html">Feedback</a>
+        <h3 class="more-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☰</h3>
+    </nav>
+
+    <div class="content">
+        <header>
+            <h1>CASE</h1>
+        </header>
+
+        <section>
+            <h1>Feedback</h1>
+
+            <!-- Feedback Posts (Manually Added) -->
+            <div class="feedback-posts">
+                <div class="feedback-post">
+                    <h3>John Doe</h3>
+                    <p>Great service! Very satisfied.</p>
+                    <small>Posted on: 2023-10-01 10:15 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Jane Smith</h3>
+                    <p>The product was delivered on time.</p>
+                    <small>Posted on: 2023-10-02 11:30 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Alice Johnson</h3>
+                    <p>Excellent customer support.</p>
+                    <small>Posted on: 2023-10-03 12:45 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Bob Brown</h3>
+                    <p>The website is easy to use.</p>
+                    <small>Posted on: 2023-10-04 01:20 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Charlie Davis</h3>
+                    <p>Very happy with the quality.</p>
+                    <small>Posted on: 2023-10-05 02:35 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Diana Evans</h3>
+                    <p>Fast shipping and great packaging.</p>
+                    <small>Posted on: 2023-10-06 03:50 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Ethan Green</h3>
+                    <p>Highly recommend this service.</p>
+                    <small>Posted on: 2023-10-07 04:10 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Fiona Harris</h3>
+                    <p>The product exceeded my expectations.</p>
+                    <small>Posted on: 2023-10-08 05:25 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>George Clark</h3>
+                    <p>Very professional team.</p>
+                    <small>Posted on: 2023-10-09 06:40 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Hannah Lewis</h3>
+                    <p>The best experience ever!</p>
+                    <small>Posted on: 2023-10-10 07:55 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Ian Walker</h3>
+                    <p>Great value for money.</p>
+                    <small>Posted on: 2023-10-11 08:05 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Jessica Hall</h3>
+                    <p>The product is amazing.</p>
+                    <small>Posted on: 2023-10-12 09:20 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Kevin Young</h3>
+                    <p>Very responsive support team.</p>
+                    <small>Posted on: 2023-10-13 10:35 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Laura Allen</h3>
+                    <p>I will definitely buy again.</p>
+                    <small>Posted on: 2023-10-14 11:50 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Michael King</h3>
+                    <p>The delivery was very fast.</p>
+                    <small>Posted on: 2023-10-15 12:05 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Nina Wright</h3>
+                    <p>The quality is top-notch.</p>
+                    <small>Posted on: 2023-10-16 01:20 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Oscar Scott</h3>
+                    <p>Very happy with my purchase.</p>
+                    <small>Posted on: 2023-10-17 02:35 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Paula Adams</h3>
+                    <p>Great communication throughout.</p>
+                    <small>Posted on: 2023-10-18 03:50 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Quincy Baker</h3>
+                    <p>The product is worth every penny.</p>
+                    <small>Posted on: 2023-10-19 04:05 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Rachel Carter</h3>
+                    <p>Excellent service and support.</p>
+                    <small>Posted on: 2023-10-20 05:20 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Steve Diaz</h3>
+                    <p>Very satisfied with the experience.</p>
+                    <small>Posted on: 2023-10-21 06:35 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Tina Edwards</h3>
+                    <p>The product is fantastic.</p>
+                    <small>Posted on: 2023-10-22 07:50 PM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Uma Fisher</h3>
+                    <p>Great job! Keep it up.</p>
+                    <small>Posted on: 2023-10-23 08:05 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Victor Garcia</h3>
+                    <p>The service is outstanding.</p>
+                    <small>Posted on: 2023-10-24 09:20 AM</small>
+                </div>
+                <div class="feedback-post">
+                    <h3>Wendy Hill</h3>
+                    <p>I love the product!</p>
+                    <small>Posted on: 2023-10-25 10:35 AM</small>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const body = document.querySelector('body');
+        const moreLink = document.querySelector('.more-link');
+
+        let isSidebarVisible = false;
+
+        function showSidebar() {
+            nav.style.left = '0';
+            body.classList.add('sidebar-active');
+            moreLink.style.display = 'none';
+            isSidebarVisible = true;
+        }
+
+        function hideSidebar() {
+            nav.style.left = '-230px';
+            body.classList.remove('sidebar-active');
+            moreLink.style.display = 'block';
+            isSidebarVisible = false;
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            if (event.clientX < 50 && !isSidebarVisible) {
+                showSidebar();
+            }
+
+            if (event.clientX > 200 && isSidebarVisible) {
+                hideSidebar();
+            }
+        });
+    </script>
+</body>
+</html>

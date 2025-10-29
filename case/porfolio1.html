@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home - Your Portfolio</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden; 
+            height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin-left: 0;
+        }
+
+     
+        nav {
+            height: 100%;
+            width: 250px; 
+            position: fixed;
+            top: 0;
+            left: -230px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            transition: left 0.3s; 
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s; 
+        }
+
+        
+        body.sidebar-active .content {
+            margin-left: 250px;
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        
+        .more-link {
+            display: block;
+            padding: 10px;
+            color: white;
+            background-color: #333;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <nav>
+        <a href="user1.html">USER</a> 
+        <a href="porfolio1.html">Porfolio</a> 
+        <a href="jornal.html">Jornal</a>
+        <a href="note1.html">Note</a> 
+        <h3 class="more-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☰</h3>
+    </nav>
+
+  
+    <div class="content">
+        <header>
+            <h1>Welcome to My PORFOLIO</h1>
+            <p>Explore my skills and projects</p>
+        </header>
+
+        <section>
+            <h2>Welcome to My Home Page</h2>
+            <p>Here you will find an introduction to my skills, experience, and work.</p>
+        </section>
+    </div>
+
+    <script>
+        
+        const nav = document.querySelector('nav');
+        const body = document.querySelector('body');
+        const moreLink = document.querySelector('.more-link'); 
+
+        let isSidebarVisible = false;
+
+       
+        function showSidebar() {
+            nav.style.left = '0';  
+            body.classList.add('sidebar-active'); 
+            moreLink.style.display = 'none'; 
+            isSidebarVisible = true;
+        }
+
+        
+        function hideSidebar() {
+            nav.style.left = '-230px';  
+            body.classList.remove('sidebar-active'); 
+            moreLink.style.display = 'block'; 
+            isSidebarVisible = false;
+        }
+
+        
+        document.addEventListener('mousemove', (event) => {
+            
+            if (event.clientX < 50 && !isSidebarVisible) {
+                showSidebar();
+            }
+
+            
+            if (event.clientX > 200 && isSidebarVisible) {
+                hideSidebar();
+            }
+        });
+    </script>
+
+</body>
+</html>

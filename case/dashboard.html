@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home - Your Portfolio</title>
+    <style>
+        body {
+            font-family: "Inria Serif";
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            /* padding-bottom: 5px; */
+            text-align: left;
+            font-size: 35px;
+            font-family: "Inria Serif";
+            font-style: italic;
+            /* padding-left: 10px;
+            padding-top: 5px; */
+            margin: 0px;
+        }
+
+        section {
+            padding: 10px;
+            margin-left: 0;
+        }
+
+        nav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -230px;
+            background-color: #000000;
+            color: white;
+            padding-top: 20px;
+            transition: left 0.3s;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+        }
+
+        body.sidebar-active .content {
+            margin-left: 250px;
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .more-link {
+            display: block;
+            padding: 10px;
+            color: white;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        .statistics-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            border-radius: 15px; /* Rounded edges */
+            background-color: #e0f7fa; /* Light blue background */
+        }
+
+        .statistic {
+            text-align: center;
+        }
+
+        .statistic h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .statistic p {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .boxes-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: #333;
+            flex-direction: column;
+            border-radius: 15px; /* Rounded edges */
+        }
+
+        .box span {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .box p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Different background colors for each box */
+        .box:nth-child(1) {
+            background-color: #ffccbc; /* Light orange */
+        }
+
+        .box:nth-child(2) {
+            background-color: #c8e6c9; /* Light green */
+        }
+
+        .box:nth-child(3) {
+            background-color: #b3e5fc; /* Light blue */
+        }
+    </style>
+
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html"; // Redirect to login page if not logged in
+        } else {
+            const username = localStorage.getItem("username");
+            const role = localStorage.getItem("role");
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("welcome-message").textContent = `Welcome, ${username}!`;
+
+                if (role === "admin") {
+                    const adminLink = document.createElement('a');
+                    adminLink.href = "admin.html";
+                    adminLink.textContent = "Admin Panel";
+                    document.querySelector('nav').appendChild(adminLink);
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="announcement.html">Announcement</a>
+        <a href="accounts.html">Accounts</a>
+        <a href="feedbacks.html">Feedback</a>
+        <h3 class="more-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☰</h3>
+    </nav>
+
+    <div class="content">
+        <header>
+            <h1>CASE!</h1>
+        </header>
+
+        <section>
+            <h1>Dashboard Overview</h1>
+
+            <!-- Rectangle Box with Statistics -->
+            <div class="statistics-container">
+                <div class="statistic">
+                    <h3>Active Users</h3>
+                    <p>123</p>
+                </div>
+                <div class="statistic">
+                    <h3>Total Registered Users</h3>
+                    <p>456</p>
+                </div>
+            </div>
+
+            <!-- Three Square Boxes -->
+            <div class="boxes-container">
+                <div class="box">
+                    <span>Journal Created</span>
+                    <p>10</p>
+                </div>
+                <div class="box">
+                    <span>Portfolio Created</span>
+                    <p>5</p>
+                </div>
+                <div class="box">
+                    <span>Note Created</span>
+                    <p>20</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const body = document.querySelector('body');
+        const moreLink = document.querySelector('.more-link');
+
+        let isSidebarVisible = false;
+
+        function showSidebar() {
+            nav.style.left = '0';
+            body.classList.add('sidebar-active');
+            moreLink.style.display = 'none';
+            isSidebarVisible = true;
+        }
+
+        function hideSidebar() {
+            nav.style.left = '-230px';
+            body.classList.remove('sidebar-active');
+            moreLink.style.display = 'block';
+            isSidebarVisible = false;
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            if (event.clientX < 50 && !isSidebarVisible) {
+                showSidebar();
+            }
+
+            if (event.clientX > 200 && isSidebarVisible) {
+                hideSidebar();
+            }
+        });
+    </script>
+
+</body>
+</html>
