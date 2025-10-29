@@ -1,0 +1,298 @@
+body{
+    width: 100%;
+    margin: 0px;
+    margin-bottom: -20px;
+    overflow-x: hidden;
+}
+
+/*HEADER RIBBON*/
+header {
+    background-color: #FF914D;
+    color: rgb(8, 2, 2);
+    font-size: 30px;
+    padding: 0em 20px;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Inria Serif";
+}
+
+
+/*Buttons*/
+.nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/*Menu*/
+.menu-btn {
+    background: none;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 30px; 
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 0%;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-size: 18px; 
+}
+
+.menu-dropdown a {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+    background-color: #575757;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+
+
+/*Sections*/
+
+.sections{
+    margin-top: 103px; /* Adds space below the fixed header */
+    width: 100%;
+    
+}
+
+#home {
+    background-color: #52C197;
+    padding: 10px;
+    position: relative; /* Make #home the positioning context for #coverphoto */
+    height: 500px; /* Give it some height so you can see layout effects */
+}
+
+#coverphoto {
+    position: absolute;
+    left: 25%;
+    background: url('image/Rectangle 32.png');
+    height: 95%; /* of #home now */
+    width: 50%;
+    max-width: 100%;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#intro {
+    position: absolute;
+    top: 10%;
+    left: 28%;
+    width: 45%;
+    height: 50%;
+    background: url('image/text1.png') no-repeat;
+    background-size: contain; /* or use cover depending on the goal */
+    background-position: center;
+}
+
+.login-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 1% 5%;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-family: "Inria Serif";
+    font-size: 15px;
+
+    position: absolute;
+    bottom:30%;
+    left: 39%;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+.features{
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    font-style:inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-images {
+    width:70%;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0; 
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+
+.feature-images img {
+    width: 1000px;
+    height: 550px;
+    border-radius: 20px;
+}
+
+.feature-images::-webkit-scrollbar {
+   display: none;
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9CD5E9;
+    position: relative;
+    top: 70px;
+}
+
+.titleAbout{
+    font-family: 'Bebas Neue';
+    font-size: 100px;
+    position: relative;
+
+    top: -140px;
+}
+
+.subtitleAbout{
+    font-family: 'Merriweather';
+    position: relative;
+    font-size: 30px;
+
+    top: -200px;
+}
+
+.about-content{
+    display: flex;
+    gap: 100px;
+    
+    
+    position: relative;
+    top: -150px;
+    
+}
+
+#welcome{
+    font-family: 'Merriweather';
+    border: 2px solid;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    width: 700px;
+    height: 500px;
+    background-color: #FFD370;
+    border-radius: 20px;
+    text-align:center;
+
+}
+
+#quote{
+    font-family: 'Merriweather';
+    border-radius: 20px;
+    width: 700px;
+    height: 500px;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('image/image 5.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.quoteCss:link{
+    color: #F6f6f6;
+}
+
+.quoteCss:visited{
+    color: #45a049;
+}
+
+.quoteCss:hover{
+    color: #FFD370;
+}
+
+.contact-us{
+    background-color: #29292A;
+    color:#f6f6f6;
+    position: relative;
+    top:-25px;
+}
+
+.contactUs{
+    font-family: 'Bebas Neue';
+    color: #FF914D;
+    font-size: 70px;
+    position: relative;
+    top: 50px;
+    left: 100px;
+}
+
+#getInTouch{
+    font-family: 'Merriweather';
+    font-size: 30px;
+    position: relative;
+
+    left: 50px;
+    top:-20px;
+
+}
+
+.characters img{
+    width: 1300px;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 510px;
+}
+
+#desc{
+    font-family: 'Merriweather';
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#cr2025{
+    color:#000000;
+    position: relative;
+    font-family: 'Merriweather';
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    top:30px;
+}

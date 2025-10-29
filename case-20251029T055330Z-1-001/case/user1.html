@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home - Your Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./user1.css">
+</head>
+<body>
+    <nav>   
+        <div class="navButtons">
+            <div id="menu">
+                <a href="user1.html"><img src="/image/dashboard.png" alt="Dashboard "></a> 
+                <a href="jornal1.html"><img src="/image/journal.png" alt="Journal"></a> 
+                <a href="portfolio1.html"><img src="/image/portfolio.png" alt="Portfolio"></a>
+                <a href="note1.html"><img src="image/notes.png" alt="Notes"></a> 
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <header>
+            <h1 style="font-style: italic;font-size: 40px;">CASE!</h1>
+            <div class="nav-right">
+                <a href="/landingPage.html" style="padding-top: 10px;">Home</a>
+                <a href="/landingPage.html" style="padding-top: 10px;">Features</a>
+                <a href="/landingPage.html" style="padding-top: 10px;">About Us</a>
+                <button class="menu-btn" onclick="toggleMenu()">☰&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            </div>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="request-feature.html">Request Feature</a>
+                <a href="report-problem.html">Report Problem</a>
+                <a href="send-feedback.html">Send Feedback</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </header>
+
+        <section>
+            <div class="coverPhoto">
+                <img src="./image/image.png">
+            </div>  
+
+            <div class="profilePhoto">
+                <img src="./image/Rectangle 48.png">
+            </div>
+
+            <div class="homeContent">
+
+                <div id="ideaOfTheDay">
+                    <img src="/image/iothbg.png">
+                    <h2>Idea of the Day</h2>
+                    <h3>Everyday Magic</h3>
+                </div>
+
+                <div class="middleContent">
+                    <div id="userInfo">
+                        <h2>Mary Loi Yves</h2>
+                        <hr>
+                        <h3>Hi, I’m  a first-year BSIT major specializing in Animation. I’ve always been passionate about storytelling and art, and I love bringing characters to life through animation. </h3>
+
+                    </div>
+
+                    <div id="hobbies">
+                        <h2>Interest and Hobbies</h2>
+                        <hr>
+                        <h3>
+                            <pre>
+        -Pop music
+        -Painting
+                            </pre>
+                        </h3>
+                    </div>
+                </div>
+
+                <div id="spotifyCode">
+                    <img src="./image/Rectangle 61.png" alt="Spotify">
+                    <div id="spotifyCodeHover">
+                        <a onclick="document.getElementById('fileImport').click()">
+                            <img src="./image/Frame 28.png" alt="Import">
+                        </a>
+                        <input type="file" id="fileImport" accept=".png,.jpeg,.jpg" style="display:none;">
+                    </div>
+                </div>
+                
+
+                <div id="socials">
+                    <div id="gmail">
+                        <img src="./image/logos_google-gmail.png" alt="">
+                        <h2>Gmail</h2>
+                    </div>
+
+                    <div id="linkedIn">
+                        <img src="./image/devicon_linkedin.png" alt="">
+                        <h2>LinkedIn</h2>
+                    </div>
+
+                    <div id="facebook">
+                        <img src="./image/logos_facebook.png" alt="">
+                        <h2>Facebook</h2>
+                    </div>
+
+                    <div id="instagram">
+                        <img src="./image/skill-icons_instagram.png" alt="">
+                        <h2>Instagram</h2>
+                    </div>
+
+                    <div id="twitter">
+                        <img src="./image/devicon_twitter.png" alt="">
+                        <h2>Twitter/X</h2>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div id="extraSpace"></div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+                const menu = document.getElementById('menuDropdown');
+                menu.classList.toggle('show');
+            }
+
+        const nav = document.querySelector('nav');
+                const body = document.querySelector('body');
+                let isSidebarVisible = false;
+                let hideTimeout;
+                let showTimeout;
+
+        function showSidebar() {
+            clearTimeout(hideTimeout);
+            clearTimeout(showTimeout);
+            
+            showTimeout = setTimeout(() => {
+                nav.style.left = '0';
+                body.classList.add('sidebar-active');
+                isSidebarVisible = true;
+            }, 100); // Small delay before showing
+        }
+
+        function hideSidebar() {
+            clearTimeout(hideTimeout);
+            clearTimeout(showTimeout);
+            
+            hideTimeout = setTimeout(() => {
+                if (isSidebarVisible) {
+                    nav.style.left = '-100px';
+                    body.classList.remove('sidebar-active');
+                    isSidebarVisible = false;
+                }
+            }, 300); // Delay before hiding
+        }
+
+        // Show when mouse enters the left edge
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientX < 50 && !isSidebarVisible) {
+                showSidebar();
+            }
+        });
+
+        // Keep sidebar visible when mouse is over it
+        nav.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            if (!isSidebarVisible) {
+                showSidebar();
+            }
+        });
+
+        // Hide when mouse leaves the sidebar
+        nav.addEventListener('mouseleave', () => {
+            hideSidebar();
+        });
+
+        // Hide immediately if mouse moves far away from sidebar
+        document.addEventListener('mousemove', (e) => {
+            if (isSidebarVisible && e.clientX > 200) {
+                hideSidebar();
+            }
+        });
+
+        document.getElementById('fileImport').addEventListener('change', function(e) {
+        if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+            
+            if (validTypes.includes(file.type)) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.querySelector('#spotifyCode img').src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a PNG, JPEG, or JPG image');
+            }
+        }
+    });
+    </script>
+</body>
+</html>

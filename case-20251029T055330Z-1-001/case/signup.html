@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signin-bg">
+
+        <img src="image/Group 26.png" alt="">
+    </div>
+
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+    
+        <div class="message" style="position: absolute; color: red; top: 250px; left: 145px;">
+            <div id="messageFill"><h3 style="display: none;">Please fill in all the fields!</h3></div>
+            <div id="messageAgree"><h3 style="display: none;">Please agree to the terms and conditions.</h3></div>
+            <div id="messagePassword"><h3 style="display: none;">Passwords do not match!</h3></div>
+            <div id="messageSuccessful"><h3 style="display: none;">Sign-up successful! Welcome to the platform.</h3></div>
+        </div>
+
+        <div class="inputbox">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        </div>
+        <div class="terms-container" >
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the terms and conditions</label>
+        </div>
+
+        <button onclick="signUp()">Sign Up</button>
+        <div class="login-link">
+            Already have an account? <a href="login.html">Login here</a>
+        </div>
+    </div>
+
+    <script>
+        function signUp() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            const terms = document.getElementById('terms').checked;
+
+            // Hide all messages first
+            const messages = ["messageFill", "messageAgree", "messagePassword", "messageSuccessful"];
+            messages.forEach(id => {
+                const alert = document.getElementById(id);
+                if (alert) {
+                    const h3 = alert.querySelector("h3");
+                    if (h3) {
+                        h3.style.display = "none";
+                    }
+                }
+            });
+
+            if (!fullName || !email || !password || !confirmPassword) {
+                document.getElementById("messageFill").querySelector("h3").style.display = "block";
+                return;
+            }
+
+            if (!terms) {
+                document.getElementById("messageAgree").querySelector("h3").style.display = "block";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("messagePassword").querySelector("h3").style.display = "block";
+                return;
+            }
+
+            document.getElementById("messageSuccessful").querySelector("h3").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
