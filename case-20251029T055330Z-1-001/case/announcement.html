@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home - Your Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        nav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -230px;
+            background-color: #000000;
+            color: white;
+            padding-top: 20px;
+            transition: left 0.3s;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+        }
+
+        body.sidebar-active .content {
+            margin-left: 250px;
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .more-link {
+            display: block;
+            padding: 10px;
+            color: white;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        /* Announcement Cards */
+        .announcement-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .announcement-card {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-card h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .announcement-card p {
+            margin: 0;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .announcement-card small {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Announcement Form */
+        .announcement-form {
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-form h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .announcement-form input,
+        .announcement-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .announcement-form button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .announcement-form button:hover {
+            background-color: #333;
+        }
+    </style>
+
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html"; // Redirect to login page if not logged in
+        } else {
+            const username = localStorage.getItem("username");
+            const role = localStorage.getItem("role");
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("welcome-message").textContent = `Welcome, ${username}!`;
+
+                if (role === "admin") {
+                    const adminLink = document.createElement('a');
+                    adminLink.href = "admin.html";
+                    adminLink.textContent = "Admin Panel";
+                    document.querySelector('nav').appendChild(adminLink);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="announcement.html">Announcement</a>
+        <a href="accounts.html">Accounts</a>
+        <a href="feedbacks.html">Feedback</a>
+        <h3 class="more-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☰</h3>
+    </nav>
+
+    <div class="content">
+        <header>
+            <h1>CASE</h1>
+        </header>
+
+        <section>
+            <h1>ANNOUNCEMENT</h1>
+
+            <!-- Announcement Form -->
+            <div class="announcement-form">
+                <h2>Create New Announcement</h2>
+                <input type="text" id="announcement-title" placeholder="Title" required>
+                <textarea id="announcement-description" placeholder="Description" rows="4" required></textarea>
+                <button onclick="addAnnouncement()">Post Announcement</button>
+            </div>
+
+            <!-- Announcement Cards -->
+            <div class="announcement-container" id="announcement-container">
+                <!-- Announcements will be dynamically added here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const body = document.querySelector('body');
+        const moreLink = document.querySelector('.more-link');
+
+        let isSidebarVisible = false;
+
+        function showSidebar() {
+            nav.style.left = '0';
+            body.classList.add('sidebar-active');
+            moreLink.style.display = 'none';
+            isSidebarVisible = true;
+        }
+
+        function hideSidebar() {
+            nav.style.left = '-230px';
+            body.classList.remove('sidebar-active');
+            moreLink.style.display = 'block';
+            isSidebarVisible = false;
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            if (event.clientX < 50 && !isSidebarVisible) {
+                showSidebar();
+            }
+
+            if (event.clientX > 200 && isSidebarVisible) {
+                hideSidebar();
+            }
+        });
+
+        // Function to add a new announcement
+        function addAnnouncement() {
+            const title = document.getElementById('announcement-title').value;
+            const description = document.getElementById('announcement-description').value;
+
+            if (title && description) {
+                const announcementContainer = document.getElementById('announcement-container');
+
+                // Create a new announcement card
+                const announcementCard = document.createElement('div');
+                announcementCard.classList.add('announcement-card');
+
+                const announcementTitle = document.createElement('h3');
+                announcementTitle.textContent = title;
+
+                const announcementDescription = document.createElement('p');
+                announcementDescription.textContent = description;
+
+                const announcementDate = document.createElement('small');
+                announcementDate.textContent = `Posted on: ${new Date().toLocaleDateString()}`;
+
+                // Append elements to the card
+                announcementCard.appendChild(announcementTitle);
+                announcementCard.appendChild(announcementDescription);
+                announcementCard.appendChild(announcementDate);
+
+                // Add the card to the container
+                announcementContainer.prepend(announcementCard);
+
+                // Clear the form
+                document.getElementById('announcement-title').value = '';
+                document.getElementById('announcement-description').value = '';
+            } else {
+                alert('Please fill out both the title and description.');
+            }
+        }
+    </script>
+</body>
+</html>
